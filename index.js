@@ -65,3 +65,75 @@ console.log(keys);
 //to check for the existance of method or property use in
 if("radious" in another)
     console.log('Circle has a radious',another.radious);
+
+
+//Abstraction
+function Rectangle(length, breadth) {
+    this.length = length;
+    this.breadth = breadth;
+
+    // Private property
+    let defaultLocation = { x: 1, y: 2 };
+
+    this.draw = function() {
+        console.log('Draw');
+    }
+
+    // Using Object.defineProperty to define a getter and setter
+    Object.defineProperty(this, 'defaultLocation',{
+        get : function(){
+            return defaultLocation
+        },
+        set : function(value){ //we cann add validations to setter
+            if(!value.x || !value.y)
+                throw new Error('Invalid Location')
+            defaultLocation = value
+        }
+    })
+}
+const rectangle = new Rectangle(10, 5);
+// rectangle.defaultLocation = 2;
+console.log(rectangle);
+
+
+//Exercise StopWatch
+function StopWatch(){
+    let startTime , endTime , running , duration = 0;
+
+    //start the stopwatch
+    this.start = function(){
+        if (running)
+            throw new Error('StopWatch has already started!')
+        
+        running = true ;
+
+        startTime = new Date();
+    }
+    // Stop the stopwatch
+    this.stop = function(){
+        if (!running)
+            throw new Error('StopWatch is not started!')
+
+        running = false 
+
+        endTime = new Date();
+
+        const seconds = (endTime.getTime() - startTime.getTime()) /1000;
+        duration+= seconds
+    }
+    // Reset the stopwatch to its initial state
+    this.reset = function(){
+        startTime = null;
+        endTime = null
+        running = false
+        duration = 0;
+    }
+    // Define a getter for the duration property (read-only)
+    Object.defineProperty(this,'duration',{
+        get :function() {return duration}
+    })
+}
+
+const stopwatch = new StopWatch();
+
+console.log(stopwatch.duration);
