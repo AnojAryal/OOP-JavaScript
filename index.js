@@ -137,3 +137,32 @@ function StopWatch(){
 const stopwatch = new StopWatch();
 
 console.log(stopwatch.duration);
+
+
+//Inheritance
+
+//Proptotypes
+
+function Sphere(rad){
+    //Instance members
+    this.rad = rad
+
+    this.move = function(){
+        console.log('move');
+    }
+}
+//prototype members
+Sphere.prototype.stay = function(){
+    console.log('stay');
+}
+
+const c1 = new Sphere(1)
+
+//returns instance members
+console.log(Object.keys(c1));
+
+//returns all members(instance --- own + prototype)
+for(let key in c1) console.log(key);
+
+console.log(c1.hasOwnProperty('rad'));
+console.log(c1.hasOwnProperty('stay'));
