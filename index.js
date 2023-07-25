@@ -168,23 +168,44 @@ console.log(c1.hasOwnProperty('rad'));
 console.log(c1.hasOwnProperty('stay'));
 
 //prototipical inheritance
-function Shape(){
+function Shape(color){
+    this.color = color;
 }
 Shape.prototype.duplicate = function(){
     console.log('Duplicate');
 }
-function Sphere(radiou){
+
+//Intermidate function inheritance
+function extend(Child ,Parent){
+    //whenever we reset the prototype of an object 
+    Child.prototype = Object.create(Parent.prototype)
+    //we should also reset the constructor
+    Child.prototype.constructor = Child;
+}
+
+function Sphere(radiou ,color){
+    //calling the super constructor
+    Shape.call(this,color)
+
     this.radiou = radiou
 }
 
-//whenever we reset the prototype of an object 
-Sphere.prototype = Object.create(Shape.prototype)
-//we should also reset the constructor
-Sphere.prototype.constructor = Sphere
+extend(Sphere ,Shape)
 
 Sphere.prototype.stay = function(){
     console.log('Stay');
 }
 
+function Square(size){
+    this.size = size
+}
+
+extend(Square ,Shape)
+
 const s  = new Shape();
-const sp = new Sphere();
+const sp = new Sphere(1 ,'red');
+const squ = new Square(10);
+
+console.log(s);
+console.log(sp);
+console.log(squ);
