@@ -176,7 +176,11 @@ Shape.prototype.duplicate = function(){
 function Sphere(radiou){
     this.radiou = radiou
 }
+
+//whenever we reset the prototype of an object 
 Sphere.prototype = Object.create(Shape.prototype)
+//we should also reset the constructor
+Sphere.prototype.constructor = Sphere
 
 Sphere.prototype.stay = function(){
     console.log('Stay');
