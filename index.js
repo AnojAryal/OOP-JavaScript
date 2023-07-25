@@ -166,3 +166,21 @@ for(let key in c1) console.log(key);
 
 console.log(c1.hasOwnProperty('rad'));
 console.log(c1.hasOwnProperty('stay'));
+
+//prototipical inheritance
+function Shape(){
+}
+Shape.prototype.duplicate = function(){
+    console.log('Duplicate');
+}
+function Sphere(radiou){
+    this.radiou = radiou
+}
+Sphere.prototype = Object.create(Shape.prototype)
+
+Sphere.prototype.stay = function(){
+    console.log('Stay');
+}
+
+const s  = new Shape();
+const sp = new Sphere();
