@@ -167,6 +167,7 @@ for(let key in c1) console.log(key);
 console.log(c1.hasOwnProperty('rad'));
 console.log(c1.hasOwnProperty('stay'));
 
+
 //prototipical inheritance
 function Shape(color){
     this.color = color;
@@ -192,8 +193,8 @@ function Sphere(radiou ,color){
 
 extend(Sphere ,Shape)
 
-Sphere.prototype.stay = function(){
-    console.log('Stay');
+Sphere.prototype.duplicate = function(){
+    console.log('Duplicate Sphere');
 }
 
 function Square(size){
@@ -209,3 +210,41 @@ const squ = new Square(10);
 console.log(s);
 console.log(sp);
 console.log(squ);
+
+
+//Polymorphism
+function Shapes() {
+  }
+  
+Shapes.prototype.duplicate = function(){
+    console.log('Duplicate');
+}
+
+function Traingle(){
+
+}
+
+extend(Traingle, Shapes);
+
+Traingle.prototype.duplicate = function(){
+    console.log('Duplicate Triangle');
+}
+
+function Cone(){
+
+}
+
+extend(Cone ,Shapes)
+
+Cone.prototype.duplicate = function(){
+    console.log('Duplicate Cone');
+}
+
+const shape = [
+    new Traingle(),
+    new Cone()
+]
+
+for (let shapes of shape){
+    shapes.duplicate()
+}
