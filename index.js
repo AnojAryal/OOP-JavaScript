@@ -312,10 +312,40 @@ function HtmlSelectElement(items = []){
     this.removeItem = function(item){
         this.items.splice(this.items.indexOf(item),1)
     }
+
+    this.render = function(){
+        return `
+        <select>${this.items.map(item =>`
+          <option>${item}</option>`).join('')}
+        </select>`;
+    }
 }
+
 
 HtmlSelectElement.prototype = new HtmlElement();
 HtmlSelectElement.prototype.constructor = HtmlSelectElement;
+
 const h = new HtmlSelectElement();
 h.click();
 h.focus();
+
+//Exercise Polymorphism
+function HtmlImageElement(src){
+    this.src = src
+
+    this.render = function(){
+        return `<img src="${this.src}" />`
+    }
+}
+
+HtmlImageElement.prototype = new HtmlElement();
+HtmlImageElement.prototype.constructor = HtmlImageElement;
+
+const j = new HtmlSelectElement([1,2,3]);
+j.render();
+
+const img = new HtmlImageElement();
+console.log(img);
+
+img.src = 'http://'
+img.render();
