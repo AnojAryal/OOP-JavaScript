@@ -364,3 +364,13 @@ class Circle1 {
 }
 const ci = new Circle1(2)
 console.log(ci);
+
+//Hoisting
+
+function sayHello() {}  //function declaration  ----> hoisted
+
+const sayBye = function() {};  //function expression
+
+class Hi {}  //class decleration  ----->not hoisted
+
+const bye = class {};  //class expression
