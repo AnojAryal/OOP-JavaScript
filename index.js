@@ -349,3 +349,18 @@ console.log(img);
 
 img.src = 'http://'
 img.render();
+
+//ES6 classes
+class Circle1 {
+    constructor(radious1){
+        this.radious1 = radious1
+        this.move1 = function() {
+
+        }
+    }
+    draw1(){
+        console.log('Draw1');g
+    }
+}
+const ci = new Circle1(2)
+console.log(ci);
