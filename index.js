@@ -374,3 +374,24 @@ const sayBye = function() {};  //function expression
 class Hi {}  //class decleration  ----->not hoisted
 
 const bye = class {};  //class expression
+
+
+//static methods
+class Anoj {
+    constructor(age) {
+        this.age = age
+    }
+    //instance method
+    Gender(){
+        console.log('Male');
+    }
+
+    //static method
+    static parse(str){
+        const age = JSON.parse(str).age;
+        return new Anoj(age);
+    }
+}
+
+const anoj =  Anoj.parse('{"age":20}');
+console.log(anoj);
