@@ -1,3 +1,6 @@
+'use strict'
+
+
 console.log('Hello FraNzY');
 
 
@@ -395,3 +398,19 @@ class Anoj {
 
 const anoj =  Anoj.parse('{"age":20}');
 console.log(anoj);
+
+
+//the This keyword
+const Girl = function(){
+    this.suji = function(){
+        console.log(this);
+    }
+}
+
+const g = new Girl();
+//method call
+g.suji();
+
+const suji = g.suji;
+//function call
+suji()
