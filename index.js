@@ -432,3 +432,27 @@ class Numb {
 const n = new Numb(1);
 const key = Object.getOwnPropertySymbols(n)[0];
 console.log(n[key]);
+console.log(n);
+
+//private members using weakmaps
+const _two =  new WeakMap();
+const _read = new WeakMap();
+
+class Numbe {
+    constructor (two) {
+        _two.set(this, two)
+
+        _read.set(this ,() =>{
+            console.log('read' ,this);
+        })
+    }
+
+    read (){
+        _read.get(this)();
+
+        console.log("read");
+    }
+}
+
+const nu = new Numbe(2);
+nu.read();
