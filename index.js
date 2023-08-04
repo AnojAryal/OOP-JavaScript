@@ -414,3 +414,21 @@ g.suji();
 const suji = g.suji;
 //function call
 suji()
+
+//private members using symbols
+const _one = Symbol();
+const _write =Symbol();
+
+class Numb {
+    constructor (one) {
+        this[_one] = one ;
+    }
+
+    [_write](){
+        console.log("write");
+    }
+}
+
+const n = new Numb(1);
+const key = Object.getOwnPropertySymbols(n)[0];
+console.log(n[key]);
