@@ -456,3 +456,27 @@ class Numbe {
 
 const nu = new Numbe(2);
 nu.read();
+
+//getters and setters in es6
+const _getting = new WeakMap();
+
+class Take {
+    constructor(getting) {
+        _getting.set(this, getting); // Use set() to store the value in WeakMap
+    }
+
+    get getting() {
+        return _getting.get(this);
+    }
+
+    set getting(value) {
+        if (value <= 0) throw new Error('Invalid syntax');
+        _getting.set(this, value); // Use set() to update the value in WeakMap
+    }
+}
+
+const t = new Take(5); 
+console.log(t.getting); 
+
+t.getting = 10;
+console.log(t.getting); 
