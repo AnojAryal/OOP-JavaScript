@@ -505,3 +505,20 @@ class Shepad extends Dog{
 
 const sh = new Shepad('Germanshepad','Hachi')
 console.log(sh);
+
+//method riding
+class Movement {
+    move3() {
+        console.log("move 3");
+    }
+}
+
+class Moved extends Movement {
+    move3() {
+        super.move3()
+        console.log("successfuly moved");
+    }
+}
+
+const mo = new Moved()
+mo.move3();
