@@ -479,4 +479,29 @@ const t = new Take(5);
 console.log(t.getting); 
 
 t.getting = 10;
-console.log(t.getting); 
+console.log(t.getting);
+
+//inheritance in es6
+class Dog {
+    constructor( breed) {
+        this.breed = breed
+    }
+
+    move2() {
+        console.log('move2');
+    }
+}
+
+class Shepad extends Dog{
+    constructor(breed,name){
+        super (breed)
+        this.name = name
+    }
+
+    draw2() {
+        console.log('draw2');
+    }
+}
+
+const sh = new Shepad('Germanshepad','Hachi')
+console.log(sh);
