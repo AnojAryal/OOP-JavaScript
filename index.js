@@ -522,3 +522,46 @@ class Moved extends Movement {
 
 const mo = new Moved()
 mo.move3();
+
+//Exercise : stack building
+const _itemStack = new WeakMap();
+
+class Stack {
+    constructor(){
+        _itemStack.set(this,[]);
+    }
+
+    push(obj){
+        _itemStack.get(this).push(obj);
+    }
+
+    pop(){
+        const Stackitems = _itemStack.get(this)
+
+        if (Stackitems.length === 0)
+            throw new Error('Stack is empty')
+
+        return Stackitems.pop()
+    }
+
+    peek(){
+        const Stackitems = _itemStack.get(this)
+
+        if (Stackitems.length === 0)
+            throw new Error('Stack is empty')
+
+        return Stackitems[Stackitems.length-1];
+    }
+
+    count(){
+        return _itemStack.get(this).length;
+    }
+}
+const stack = new Stack();
+stack.push('a');
+stack.push('b');
+stack.push('c');
+
+console.log(stack.peek()); 
+console.log(stack.pop()); 
+console.log(stack.count()); 
