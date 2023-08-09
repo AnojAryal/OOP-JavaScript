@@ -144,7 +144,7 @@ console.log(stopwatch.duration);
 
 //Inheritance
 
-//Proptotypes
+//Prototypes
 
 function Sphere(rad){
     //Instance members
