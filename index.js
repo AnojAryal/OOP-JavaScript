@@ -208,7 +208,7 @@ extend(Square ,Shape)
 
 const s  = new Shape();
 const sp = new Sphere(1 ,'red');
-const squ = new Square(10);
+const squ = new Square(20);
 
 console.log(s);
 console.log(sp);
